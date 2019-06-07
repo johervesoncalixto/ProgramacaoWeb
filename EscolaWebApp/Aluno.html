@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Cadastrar Aluno</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Aluno </h1>
+
+      <form action="http://localhost:5000/aluno" method="POST">
+
+        <label for="nome">Nome do aluno </label>
+        <input type="text" name="nome">
+        <br>
+        <label for="logradouro">Matricula </label>
+        <input type="text" name="matricula">
+        <br>
+        <label for="cidade">Cpf </label>
+        <input type="text" name="cpf"> <br>
+        <label for="nascimento">Nascimento </label>
+        <input type="text" name="nascimento"> <br>
+
+        <input type="submit" name="cadastrar" value="Cadastrar" >
+      </form>
+
+  </body>
+</html>

@@ -53,18 +53,16 @@
           </div>
         </nav>
       </header>
-        <main ng-Controler= "MeuPrimeiroControlador" >
-          <img class="displayed"src="http://i2.wp.com/es-acao.org.br/wp-content/uploads/2018/06/Pilar_Educa%C3%A7%C3%A3o-e1530207668143.jpg"  alt="" style="width:1090px;height:620px">
+      <main ng-controller="HomeController">
+        <img class="displayed"src="http://i2.wp.com/es-acao.org.br/wp-content/uploads/2018/06/Pilar_Educa%C3%A7%C3%A3o-e1530207668143.jpg"  alt="" style="width:1090px;height:620px">
 
-          <input type="text" ng-model"logradouro" name="logradouro" value="">
-          <h1>Meu logradouro é {{logradouro}}</h1>
-
-          <input type="number" ng-model="numero1">
-          <input type="number" ng-model="numero1">
-
-          <button ng-click ="somar()"> Somar</button>
-          <h2>{{Resultado}}</h2>
-        </main>
+       <div class="form-group">
+         <label for= 'nome'> Nome: </label>
+         <input type="text" name="nome" class="form-control" ng-model="nome">
+       </div>
+       <button ng-click="desejarBoasVindas()" class="btn btn-dark btn-lg btn-block">Exibir</button>
+       <h1>{{mensagem}}</h1>
+     </main>
         <footer>
           Projeto - Joherveson e Matheus
         </footer>

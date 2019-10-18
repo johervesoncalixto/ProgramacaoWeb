@@ -1,28 +1,114 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <title>Cadastrar Aluno</title>
-  </head>
+<html ng-app="EscolaWebApp">
 
-  <body>
-    <h1>Cadastro de Aluno </h1>
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href=https://www.ifpb.edu.br/materias/prpipg-publica-edital-de-cadastro-de-docentes/logo-nova-ifpb.jpg/@@images/image.jpegg type="image/x-icon" />
 
-      <form action="http://localhost:5000/aluno" method="POST">
+  <title> Cadastro Aluno</title>
+  <link href="CSS/index.css" rel="stylesheet" type="text/css" />
+  <link href="CSS/Menu.css" rel="stylesheet" type="text/css">
 
-        <label for="nome">Nome do aluno </label>
-        <input type="text" name="nome">
-        <br>
-        <label for="logradouro">Matricula </label>
-        <input type="text" name="matricula">
-        <br>
-        <label for="cidade">Cpf </label>
-        <input type="text" name="cpf"> <br>
-        <label for="nascimento">Nascimento </label>
-        <input type="text" name="nascimento"> <br>
+  <!--AngularJs -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js" type="text/javascript"></script>
 
-        <input type="submit" name="cadastrar" value="Cadastrar" >
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <!-- EscolaWebApp - Aplicação Angular -->
+  <script src="js/app.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+  <div class="meu-container">
+    <header>
+      <h2 class="logo">
+        Cadastro Aluno
+      </h2>
+      <nav>
+        <ul class="navigation">
+          <li><a href="Aluno.html">Aluno</a></li>
+          <li><a href="Curso.html">Curso</a></li>
+          <li><a href="Disciplina.html">Disciplina</a></li>
+          <li><a href="Escola.html">Escola</a></li>
+          <li><a href="Turma.html">Turma</a></li>
+          <li><a href="Professor.html">Professor</a></li>
+          <li><a href="Campus.html">Campus</a></li>
+          <li><a href="Turno.html">Turno</a></li>
+          <li><a href="Endereco.html">Endereço</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main ng-controller="AlunoController">
+      <form action="http://localhost:5000/aluno" name="alunoForm" method='POST'>
+        <div class="form-group">
+          <!-- Nome -->
+          <label for='nome'> Nome: </label>
+          <input type='text' name='nome' class="form-control" ng-model="nome" required ng-minlength="3" ng-maxlength="25">
+          <div>
+            <div ng-show="alunoForm.nome.$error.required && alunoForm.nome.$dirty" class="alert alert-danger">
+              Por favor, preencha o campo nome!
+            </div>
+            <div ng-show="alunoForm.nome.$error.minlength && alunoForm.nome.$dirty" class="alert alert-danger">
+              Por favor, o Nome não tem o tamanho mínimo válido!
+            </div>
+            <div ng-show="alunoForm.nome.$error.maxlength && alunoForm.nome.$dirty" class="alert alert-danger">
+              Por favor, o Nome não tem o tamanho máximo válido!
+            </div>
+          </div>
+        </div>
+
+        <!-- Matrícula -->
+        <div class="form-group">
+          <label for='matricula'> Matrícula:</label>
+          <input type='text' name='matricula' class="form-control" ng-model="matricula" required ng-minlength="12">
+          <div ng-messages="alunoForm.matricula.$error" ng-if='alunoForm.matricula.$dirty'>
+            <div ng-message="required" class="alert alert-danger">
+              Por favor, preencha o campo Matrícula!
+            </div>
+            <div ng-message="minlength" class="alert alert-danger">
+              Por favor, a Matrícula não tem o tamanho mínimo válido!
+            </div>
+          </div>
+        </div>
+
+        <!-- CPF -->
+        <div class="form-group">
+          <label for='cpf'> CPF:</label>
+          <input type='text' name='cpf' class="form-control" ng-model="cpf">
+        </div>
+
+        <!-- Nascimento -->
+        <div class="form-group">
+          <label for='nascimento'> Nascimento:</label>
+          <input type='date' name='nascimento' class="form-control" ng-model="nascimento">
+        </div>
+
+        <!-- Endereço -->
+        <div class="form-group">
+          <label for='id_endereço'> Número de Identificação do Endereço:</label>
+          <input type='text' name='id_endereco' class="form-control" ng-model="id_endereco">
+        </div>
+
+        <!-- Curso -->
+        <div class="form-group">
+          <label for='id_curso'> Número de Identificação do Curso:</label>
+          <input type='text' name='id_curso' class="form-control" ng-model="id_endereco">
+        </div>
+
+        <!-- Botões -->
+        <input type='reset' name='limpar' value='Limpar' class="btn btn-secondary btn-lg btn-block">
+        <input type='submit' class="btn btn-primary btn-lg btn-block" name='cadastrar' value='Cadastrar'>
       </form>
+    </main>
+    <footer>
+      Rodapé
+    </footer>
+  </div>
+</body>
 
-  </body>
 </html>

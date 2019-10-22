@@ -55,13 +55,13 @@
               <label for='turno'>Turno:</label>
               <input type='text' ng-model='turno' name='turno' class="form-control" required ng-minlength="3" ng-maxlength="10">
               <div ng-show="cursoForm.turno.$error.required && cursoForm.turno.$dirty" class="alert alert-danger">
-                Por favor, insira o seu turno!
+                Preencha o campo turno
               </div>
               <div ng-show="cursoForm.turno.$error.minlength && cursoForm.turno.$dirty" class="alert alert-danger">
-                O turno deve conter, no mínimo, 3 caracteres!
+                O turno deve conter no mínimo 3 caracteres!
               </div>
               <div ng-show="cursoForm.turno.$error.maxlength && cursoForm.turno.$dirty" class="alert alert-danger">
-                O turno deve conter, no máximo, 10 caracteres!
+                O turno deve conter no máximo 10 caracteres!
               </div>
             </div>
             <button type="submit" class="btn btn-secondary btn-lg btn-block">Cadastrar</button>
